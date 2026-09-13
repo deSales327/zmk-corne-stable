@@ -1,5 +1,34 @@
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 #include "chipper.dtsi"
+
+/*
+ * Right-half LED hardware test.
+ *
+ * The XIAO nRF52840 onboard RGB LED channels are active-low:
+ * driving P0.26, P0.06, and P0.30 low turns red, blue, and green on.
+ * These GPIO hogs force all three channels on during boot.
+ * This is not RGB underglow and does not require an underglow strip.
+ */
+&gpio0 {
+	debug_user_led_r {
+		gpio-hog;
+		gpios = <26 GPIO_ACTIVE_LOW>;
+		output-low;
+	};
+
+	debug_user_led_b {
+		gpio-hog;
+		gpios = <6 GPIO_ACTIVE_LOW>;
+		output-low;
+	};
+
+	debug_user_led_g {
+		gpio-hog;
+		gpios = <30 GPIO_ACTIVE_LOW>;
+		output-low;
+	};
+};
 
 &default_transform {
 	col-offset = <6>;
