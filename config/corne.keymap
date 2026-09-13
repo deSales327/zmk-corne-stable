@@ -14,6 +14,13 @@
 #define SYS 4  // system such as media, bluetooth, bootloader, etc
 #define PNT 5  // mouse
 
+// Corne v3 has 27 RGB LEDs per half: 6 underglow + 21 per-key.
+// The nice!nano v2 overlay defaults to 10, which only drives the six
+// underglow LEDs plus the first four per-key LEDs.
+&led_strip {
+    chain-length = <27>;
+};
+
 / {
     combos {
         compatible = "zmk,combos";
