@@ -1,5 +1,5 @@
-# GitHub Actions build matrix for the left Corne v3 firmware only.
+# GitHub Actions build matrix for the right Corne v3 firmware only.
 ---
 include:
   - board: nice_nano_v2
-    shield: corne_left
+    shield: corne_right
